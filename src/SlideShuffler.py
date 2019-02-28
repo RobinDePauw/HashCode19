@@ -1,4 +1,5 @@
 from Slide import Slide
+from numpy import Matrix
 
 class SlideShuffler:
     def __init__(self, slideshow):
@@ -7,7 +8,7 @@ class SlideShuffler:
     def shuffle(self):
         
         slides  = self.slideshow.slide_list
-        slides = sorted(slides,key=lambda x: x.get_tags_amt())
+        slides = sorted(slides,key=lambda x: x.get_tags_amt(), reverse=True)
         print("slides sorted")
         new_slides = []
         while len(slides) != 0:
@@ -22,9 +23,14 @@ class SlideShuffler:
 
 
         return self.slideshow
+        
+    def zielige_shuffle(self, slidelist):
+        pass
 
 
     def shuffle_list(self, slidelist):
+        #optimal = list(list())
+        #for i in range slide
         slides_copy= slidelist
         cur_slide = slidelist[0]
         slides_copy.remove(cur_slide)
