@@ -1,6 +1,8 @@
 
 from SlideShow import SlideShow
 from InputParser import InputParser
+from SlideShuffler import SlideShuffler
+import sys
 
 def process_file(filename):
     parser = InputParser()
@@ -30,14 +32,13 @@ def write_output(slideshow, filename):
     outputfile.write(out)
 
 if __name__ == "__main__":
-
-    files = ["a", "b", "c", "d", "e"]
-    #files = ["a"]
+    files = sys.argv[1:]
 
     for f in files:
         print("starting file: "+f)
         photos = process_file(f)[1]
         slideshow = SlideShow()
         slideshow = makeSlides(slideshow, photos)
-        slideshow.optimize()
+        ss = SlideShuffler(slideshow)
+        slideshow = ss.shuffle()
         write_output(slideshow, f)
