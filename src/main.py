@@ -1,11 +1,6 @@
-from InputParser import InputParser
+
 from SlideShow import SlideShow
-
-
-def process_file(filename):
-    parser = InputParser()
     return parser.parse("../input/" + filename + ".in")
-
 def makeSlides(slideshow, photos):
     vertical_buffer = None
 
