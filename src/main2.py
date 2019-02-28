@@ -19,11 +19,14 @@ def write_output(slideshow, filename):
 if __name__ == "__main__":
 
     files = ["a", "b", "c", "d", "e"]
-    #files = ["a"]
+    files = ["e"]
 
     for f in files:
         print("starting file: "+f)
         photos = process_file(f)[1]
         verts = set(filter(lambda x: x.orientation == "V",photos))
         combinator = VerticalCombinator(verts)
-        combinator.plot_dist()
+        combinator.plot_dist(verts)
+        combinator.plot_dist(combinator.random())
+        combinator.plot_dist(combinator.order_big_with_small())
+        combinator.plot_dist(combinator.max_union_tags_random(100))
