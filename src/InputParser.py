@@ -20,9 +20,9 @@ class InputParser:
             photoline = inputfile.readline()
             param = photoline[:-1].split(' ')
             orientation, n_tags, tags = str(param[0]), int(param[1]), set(param[2:])
-            print(orientation)
-            print(n_tags)
-            print(tags)
+            #print(orientation)
+            #print(n_tags)
+            #print(tags)
             photo = Photo(id,orientation,n_tags,tags)
             photo_set.add(photo)
 

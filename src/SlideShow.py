@@ -6,7 +6,7 @@ class SlideShow:
         self.slide_list = []
 
     def add_slide(self, photo):
-        self.slide_list.append(Slide(photo))
+        self.slide_list.append(Slide([photo]))
 
     def add_doubleslide(self, photo1, photo2):
         assert (photo1.orientation == "V")
@@ -16,5 +16,8 @@ class SlideShow:
     def get_output(self):
         output = ""
         output += str(len(self.slide_list)) + "\n"
-        for i, slide in self.slide_list:
+        print(self.slide_list)
+        for slide in self.slide_list:
             output += slide.output() + "\n"
+
+        return output
