@@ -5,5 +5,8 @@ class Photo:
         self.n_tags = n_tags
         self.tags = tags
 
+    def get_tags(self):
+        return self.tags
+
     def __str__(self):
         return "< photo:" +str(self.id) + ">"
