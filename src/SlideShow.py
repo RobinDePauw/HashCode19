@@ -16,8 +16,11 @@ class SlideShow:
     def get_output(self):
         output = ""
         output += str(len(self.slide_list)) + "\n"
-        print(self.slide_list)
         for slide in self.slide_list:
             output += slide.output() + "\n"
 
         return output
+
+    def optimize(self):
+        # todo: implement
+        pass
