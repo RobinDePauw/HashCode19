@@ -1,7 +1,10 @@
+from Slide import Slide
 from SlideShow import SlideShow
 from InputParser import InputParser
 from SlideShuffler import SlideShuffler
 import sys
+from VerticalCombinator import VerticalCombinator
+
 
 def process_file(filename):
     parser = InputParser()
@@ -9,19 +12,14 @@ def process_file(filename):
 
 
 def makeSlides(slideshow, photos):
-    vertical_buffer = None
-
-    for i in range(len(photos)):
-        cur_photo = photos.pop()
-        if(cur_photo.orientation == "H"):
-            slideshow.add_slide(cur_photo)
-        else:
-            if vertical_buffer is None:
-                vertical_buffer = cur_photo
-            else:
-                slideshow.add_doubleslide(vertical_buffer, cur_photo)
-                vertical_buffer = None
-  
+    verts = set(filter(lambda x: x.orientation == "V", photos))
+    horts = set(filter(lambda x: x.orientation == "H", photos))
+    combinator = VerticalCombinator(verts)
+    vert_slides = combinator.order_big_with_small()
+    hort_slides = set(map(lambda x:Slide([x]),horts))
+    all_slides = hort_slides | vert_slides
+    slideshow = SlideShow()
+    slideshow.set_slide_list(list(all_slides))
     return slideshow
 
 
