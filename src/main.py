@@ -1,4 +1,3 @@
-
 from SlideShow import SlideShow
 from InputParser import InputParser
 
