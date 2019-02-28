@@ -27,3 +27,8 @@ class SlideShow:
         score2 = len(slide1.get_tags.difference(slide2.get_tags))
         score3 = len(slide2.get_tags.difference(slide1.get_tags))
         return min([score1,score2,score3])
+
+    def percentage_score(self,slide1,slide2):
+        score = self.score_transition(slide1,slide2)
+        perc_score = score / (len(slide1.get_tags)/2.0)
+        return perc_score
