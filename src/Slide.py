@@ -13,6 +13,10 @@ class Slide:
         elif len(self.photos) == 2:
             return self.photos[0].tags | self.photos[1].tags
 
+
+    def get_tags_amt(self):
+        return len(self.get_tags())
+
     def output(self):
         if len(self.photos) == 1:
             return str(self.photos[0].id)

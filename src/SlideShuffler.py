@@ -7,9 +7,11 @@ class SlideShuffler:
     def shuffle(self):
         
         slides  = self.slideshow.slide_list
+        slides = sorted(slides,key=lambda x: x.get_tags_amt())
+        print("slides sorted")
         new_slides = []
         while len(slides) != 0:
-            subset_size = min(300,len(slides))
+            subset_size = min(200,len(slides))
             subset = slides[:subset_size]
             slides = slides[subset_size:]
 
